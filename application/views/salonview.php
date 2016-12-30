@@ -1,0 +1,297 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
+<?php include 'header.php' ?>
+
+
+<div id="salon">
+    <div id="banner" style="background-image: url(<?= base_url('img/slider/slider2.jpg'); ?>);" class="has-background">
+        <h2 class="salon-name"><?php echo htmlspecialchars_decode($salon['name']); ?></h2>
+        <!-- Display Salon Rating -->
+        <?php 
+        if($count_reviewrs[0]->count){
+            ?> 
+            <div class="salon-rating">
+                <?php 
+$j = (int) $rating[0]->rating; // Get the current rating
+for($i=1; $i<=5; $i++) { // for loop to maximum rating 5
+if($i <= $j) {  // if counter less or equal rating, display colored image
+    ?>
+    <span><img src="<?php echo base_url("img/icons/frasha-r.png") ?>" alt=""></span>
+    <?php
+} 
+else {  // display gray image
+    ?>
+    <span><img src="<?php echo base_url("img/icons/frasha.png") ?>" alt=""></span>
+    <?php
+}
+}
+?>
+
+<span>(<?=$count_reviewrs[0]->count?>)</span>
+</div>              
+<?php } ?>
+</div> <!-- End Banner -->
+
+
+
+<!-- 
+<div class="meta">
+<?php
+echo '<div class="amen">';
+if ($salon['has_parking'] == '1') {
+echo '<img data-toggle="tooltip" data-placement="top" title="Car parking avilable!" src=' . base_url("img/amen/car.png") . ' alt="">&nbsp;&nbsp;';
+}
+if ($salon['kids_friendly'] == '1') {
+
+echo '<img data-toggle="tooltip" data-placement="top" title="Kids friendly!" src=' . base_url("img/amen/kids.png") . ' alt="">&nbsp;&nbsp;';
+}
+if ($salon['by_appointment'] == '1') {
+echo '<img data-toggle="tooltip" data-placement="top" title="Appointment by call!" src=' . base_url("img/amen/bycall.png") . ' alt="">&nbsp;&nbsp;';
+}
+if ($salon['payment_method'] == '0') {
+
+echo '<img data-toggle="tooltip" data-placement="top" title="Only cash payment!" src=' . base_url("img/amen/cash.png") . ' alt="">&nbsp;&nbsp;';
+}
+if ($salon['payment_method'] == '1') {
+echo '<img data-toggle="tooltip" data-placement="top" title="Only card payment!" src=' . base_url("img/amen/card.png") . ' alt="">&nbsp;&nbsp;';
+}
+if ($salon['payment_method'] == '2') {
+
+echo '<img data-toggle="tooltip" data-placement="top" title="Both Cash & Card payment!"   src=' . base_url("img/amen/cash.png") . ' alt="">&nbsp;&nbsp;';
+echo '<img data-toggle="tooltip" data-placement="top" title="Both Cash & Card payment!" src=' . base_url("img/amen/card.png") . ' alt="">&nbsp;&nbsp;';
+}
+echo '</div>'; ?>
+
+</div> -->
+
+<div id="tabs">
+    <a rel="#services" class="active">Services</a>
+    <a rel="#reviews">Reviews</a>       
+</div> <!-- End Tabs -->
+
+<div class="flex-salon-profile">
+    <div id="information">
+        <?php
+        foreach ($salon['address'] as $value) { 
+			if($value->altitude !=0 && $value->longtitude != 0){
+				
+			
+			$altitude=$value->altitude;
+		
+		$longtitude=$value->longtitude;
+			echo $longtitude;	
+			
+		?>
+        <!--   echo '<h4>'.$value['name'].'</h4>';  -->
+        <div id="map"></div>
+        <div class="salon-address">
+            <div class="sec1"><small>Building</small><br><span class="number"><?=$value->building_number?></span></div>
+            <div class="sec1"><small>Area (Zone)</small><br><?=htmlspecialchars_decode($value->name)?><br><?=$value->zone_number?></div>
+            <div class="sec4"><small>Street</small><br><?=$value->street_number?></div>
+        </div>
+
+        <?php
+			} 
+		} ?>
+
+        <?php if (!empty($salon['social_media_account'])) {?>
+        <div class="salon-social">
+            <h3>Social Media</h3>
+            <div class="social">
+                <?php foreach ($salon['social_media_account'] as $value) {
+                    $img = base_url("img/social/" . $value->social_media_name . '.png');
+                    $link = $value->link . $value->account_name;
+                    echo '<a target=_blank href=' . $link . '><img src="' . $img . '"></a>';
+                } ?>
+            </div>
+        </div>
+        <?php } ?>
+
+        <div class="salon-about">
+            <h3>About</h3>
+            <p> <?php echo htmlspecialchars_decode($salon['about']); ?></p>
+        </div>
+        <div class="salon-times">
+            <h3>Working Times</h3>
+            <?php
+            $flag = FALSE;
+            foreach ($salon['normal_timing'] as $value) {
+                $today = date("h:ia");
+                $status = '';
+                if (date("l") == date("l", strtotime($value->day_name))) {
+                    ?>            
+                    <div class="panel-group">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" href="#collapse1">Today&nbsp;&nbsp;&nbsp; &nbsp;
+                                        <?=date("h:ia", strtotime($value->open_time))?> - <?=date("h:ia", strtotime($value->close_time))?> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                        <?php if($value->close_time_2 != NULL || $value->open_time_2 != NULL){ ?>
+                                        <?=date("h:ia", strtotime($value->open_time_2))?> - <?=date("h:ia", strtotime($value->close_time_2))?>
+                                        <?php }?>
+                                        &nbsp;&nbsp;&nbsp; 
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <?php foreach ($salon['normal_timing'] as $value2) {?>
+                                <div class="panel-body">
+                                    <?=$value2->day_name?> &nbsp;&nbsp;&nbsp;  <?=date("h:ia", strtotime($value2->open_time))?>-  <?=date("h:ia", strtotime($value2->close_time))?>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                                    <?php if($value2->close_time_2 != NULL || $value2->open_time_2 != NULL){ ?>
+                                    <?=date("h:ia", strtotime($value2->open_time_2))?> - <?=date("h:ia", strtotime($value2->close_time_2))?>
+                                    <?php }?>
+                                </div>
+                                <?php } ?>
+                            </div>
+                        </div>
+                    </div>  <!-- End panel group -->                  
+                    <?php
+                    break;
+                }
+            } ?>
+        </div> <!-- End Salon times -->
+
+    </div>  <!-- End #inforamtion -->
+
+
+    <!-- Start #services -->
+    <div id="services" >
+        <h3>Services</h3>
+
+        <?php
+        if(!empty($salon['categories'])){
+            foreach ($salon['categories'] as $value) {
+                ?>
+                <div class="category" id="<?=$value['id']?>">
+                    <div class="category_h">
+                        <div class="caption">
+                            <h3><?=htmlspecialchars_decode($value['name'])?></h3>
+                        </div>
+                        <img  class="img" src="/StaylicFrontend/img/categories/<?=$value['icon']?>" alt="<?=$value['name']?>">
+                    </div>
+
+                    <?php
+                    if (!empty($value['sub_categories'])) {
+                        foreach ($value['sub_categories'] as $subcat) { ?>
+                        <!--  <div class="menu"> -->
+                        <div class="category_sub"><h3><?=$subcat['name']?></h3></div>
+                        <?php 
+                        if (!empty($subcat['services'])) {
+                            foreach ($subcat['services'] as $servic)
+                            {
+                                $line='';
+                                if($servic->price > 0){
+                                    $line.=$servic->price.' QR';
+                                }
+                                if($servic->duration_minutes > 0)	{
+                                    if($servic->price > 0){
+                                        $line.=' | ';
+                                    }
+                                    $line.=$servic->duration_minutes.' Mins';
+                                }	
+
+                                ?>
+                                <div class="menu-item">
+                                    <div class="name"><?=htmlspecialchars_decode($servic->name)?></div>
+                                    <?php if($line !=''){
+                                        echo '<div class="price">'.$line.'</div>';							 
+                                    }
+                                    if(!empty($servic->description)){
+                                        echo '<div class="desc">'.htmlspecialchars_decode($servic->description).'</div>';
+
+                                    }
+                                    ?>
+
+                                </div> <!-- end menu-item -->
+                                <?php								
+                            }
+                        }
+                    }
+                }
+                if (!empty($value['services'])) {
+                    foreach ($value['services'] as $service) { 
+                        $line='';
+                        if($service->price > 0){
+                            $line.=$service->price.' QR';
+                        }
+                        if($service->duration_minutes > 0)	{
+                            if($service->price > 0){
+                                $line.=' | ';
+                            }
+                            $line.=$service->duration_minutes.' Mins';
+                        }		
+                        ?>
+                        <div class="menu-item">
+                            <div class="name"><?=htmlspecialchars_decode($service->name)?></div>
+                            <div class="price"><?=$line?></div>
+                            <div class="desc"><?=htmlspecialchars_decode($service->description)?></div>
+                        </div> <!-- end menu-item -->
+                        <?php }
+                    } ?>
+                </div> <!-- end Catagory -->
+                <?php }
+            } 
+            else {  ?>
+            <p>This salon has no services because it is not registered yet, <a href="<?= base_url('../StaylicFrontend/Welcome/salon_owner')?>">register your business now!</a></p>
+            <?php }
+            ?>
+
+        </div> <!-- End Services -->
+
+
+<div id="reviews">
+    <h3>Reviews</h3>
+    <div class="review">
+
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn" data-toggle="modal" data-target="#myModal">Add Your Review</button>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div name="reviewForm" id="reviewForm" class="form" id="reviewForm"> 
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Review</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div id="alert-msg"></div>
+                            <?php // echo validation_errors(); ?>
+                            <input id="salon_id" type="hidden" name="salon_id" value="<?php echo $salon['id']; ?>">
+                            <div id="rating" class="rating" name="rating" >
+                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                            </div>
+                            <div><input required id="name" type="text" name="name" placeholder="Your Name" value="<?php echo set_value('name'); ?>" size="20"> </div>
+                            <div><input required id="email" type="email" name="email" placeholder="Your Email" value="<?php echo set_value('email'); ?>"></div>
+
+                            <div><textarea id="review_text" name="review_text" cols="50" rows="5" placeholder="Comments" ></textarea>
+
+<!--        <textarea id="review_text" type="text" name="review_text" placeholder="Share your experience..." ></textarea>
+-->        </div>
+<div class="g-recaptcha" data-sitekey="6Lebhg8UAAAAAB9vEQ3iA-bj659eTyjCLQQL02oR"></div>
+</div>
+<div class="modal-footer">
+    <button name="reviewSubmit" type="submit" class="btn" id="submit">Submit your Review</button>
+</div>
+</div> 
+
+</div> <!-- end Modal Content -->
+</div> <!-- end Modal Dialog -->
+</div> <!-- end myModal -->
+
+<div id="thanks" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div> 
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Review Submitted</h4>
+                </div>
+                <div class="modal-body">
+                    <h4> Thank you for rating 
