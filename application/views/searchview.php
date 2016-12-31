@@ -91,7 +91,7 @@
         <!--<div class="img has-background" style="background-image: url('../img/salonprofileimage/{{salon.profile_image}}');"></div>-->
         <div class="info">
           <div class="title">{{ salon.name }}</div>
-          <div ng-if="salon.count_reviewrs > 0" class="salon-rating" id="{{salon.rating[0].rating}} "> 
+          <div ng-if="salon.count_reviewrs > 0" class="rating" id="{{salon.rating[0].rating}} "> 
          <!-- <div class="salon-rating" id="{{salon.rating[0].rating}}>-->
              <?php
 			for($i=1;$i<=5;$i++)	

@@ -4,7 +4,7 @@
 <section id="discover">
 
  <div class="page-title">
-        <h2>Discover All Salons</h2>
+        <h2>Discover</h2>
     </div>
 
     <div class="flex-all-salons">
@@ -13,7 +13,10 @@
 	foreach ($salons as $salon){?>
 		
 	<a class="thumbnail" href="<?=base_url('/salon/'.$salon['url_title'])?>">
-	<img src="./img/salonprofileimage/<?=$salon['profile_image']?>">
+	<div class="img has-background" style="background-image: url('./img/salonprofileimage/<?=$salon['profile_image']?>')">
+		
+	</div>
+	<!-- <img src="./img/salonprofileimage/<?=$salon['profile_image']?>"> -->
 	<h2><?=$salon['name']?></h2>
 	<div>
 	<?php

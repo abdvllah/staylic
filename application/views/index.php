@@ -56,141 +56,126 @@
 <section id="categories">
     <div class="wrap-h"><h2>CATEGORIES</h2></div>
    
-    <div class="homepage_item" id="haircat">
-     <a href="<?= base_url('/Search')?>" onclick="changeCategory('Hair');" >
+    <div class="flex-homepage-items">
+        
+     <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Hair');" >
         <div class="caption">
             <h3>Hair</h3>
-        </div>   <img src="img/categories/hair.png" class="img-responsive" alt="Hair category"> 
+        </div>   
+        <img src="img/categories/hair.png" class="img-responsive" alt="Hair category"> 
         </a>
-    </div>
-    <div class="homepage_item" id="facialcat">
-      <a href="<?= base_url('/Search')?>" onclick="changeCategory('Facial');" >
+
+      <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Facial');" >
         <div class="caption">
             <h3>Facial</h3>
         </div>
         <img src="img/categories/facial.png" class="img-responsive" alt="Facial Category">
          </a>
-    </div>
    
    
-    <div class="homepage_item" id="mpcat">
-     <a href="<?= base_url('/Search')?>" onclick="changeCategory('Manicure & Pedicure');" >
+     <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Manicure & Pedicure');" >
         <div class="caption">
             <h3>Manicure & Pedicure</h3>
         </div>
         <img src="img/categories/m_p.png" class="img-responsive" alt="Manicure & Pedicure Category">
     </a>
-    </div>
-       <div class="homepage_item" id="waxingcat">
-        <a href="<?= base_url('/Search')?>" onclick="changeCategory('Waxing');" >
+        <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Waxing');" >
         <div class="caption">
             <h3>Waxing</h3>
         </div>
         <img src="img/categories/waxing.png" class="img-responsive" alt="Waxing Category">
    </a>
-    </div>
    
-       <div class="homepage_item" id="makeupcat">
-         <a href="<?= base_url('/Search')?>" onclick="changeCategory('Makeup');">
+         <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Makeup');">
         <div class="caption">
             <h3>Makeup</h3>
         </div>
         <img src="img/categories/makeup.png" class="img-responsive" alt="Makeup Category">
         </a>
-    </div>
-    <div class="homepage_item" id="hennacat">
-            <a href="<?= base_url('/Search')?>" onclick="changeCategory('Henna');" >
+            <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Henna');" >
         <div class="caption">
             <h3>Henna</h3>
         </div>
         <img src="img/categories/henna.png" class="img-responsive" alt="Henna Category">
        </a>
-    </div>
-    <div class="homepage_item" id="bridalcat">
-        <a href="<?= base_url('/Search')?>" onclick="changeCategory('Bride');">
+        <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Bridal');">
         <div class="caption">
             <h3>Bridal</h3>
         </div>
         <img src="img/categories/bride.png" class="img-responsive" alt="Bridal">
        </a>
-    </div>
-    <div class="homepage_item" id="spacat">
-           <a href="<?= base_url('/Search')?>" onclick="changeCategory('Spa');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeCategory('Spa');" >
         <div class="caption">
             <h3>Spa</h3>
         </div>
         <img src="img/categories/spa.png" class="img-responsive" alt="Spa Category">
     </a>
-    </div>
+
+</div>
+
 </section>
     <section id="location">  
         <div class="wrap-h"><h2>LOCATIONS</h2></div>
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Wakrah');" >
+        <div class="flex-homepage-items">
+
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Wakrah');" >
             <div class="caption">
                 <h3>Al-Wakrah</h3>
             </div>
             <img src="img/loc/alwakrah.png" class="img-responsive" alt="Al-Wakrah">
         </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Old Airport');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Old Airport');" >
             <div class="caption">
                 <h3>Old Airport</h3>
             </div>
             <img src="img/loc/old-airport.png" class="img-responsive" alt="Old Airport">
        </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Rayyan');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Rayyan');" >
             <div class="caption">
                 <h3>Al-Rayyan</h3>
             </div>
             <img src="img/loc/alrayyan.png" class="img-responsive" alt="Al Rayyan">
         </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Madinat Khalifa');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Madinat Khalifa');" >
             <div class="caption">
                 <h3>Madinat Khalifa</h3>
             </div>
             <img src="img/loc/madinat-khalifa.png" class="img-responsive" alt="Madinat Khalifa">
             </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Um Salal Mohammed');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Um Salal Mohammed');" >
             <div class="caption">
                 <h3>Umsalal</h3>
             </div>
             <img src="img/loc/umsalal.png" class="img-responsive" alt="Umsalal">
             </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Khour');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Khour');" >
             <div class="caption">
                 <h3>Al-Khour</h3>
             </div>
             <img src="img/loc/alkhour.png" class="img-responsive" alt="Al-Khour">
             </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Saad');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Sadd');" >
             <div class="caption">
-                <h3>Al-Saad</h3>
+                <h3>Al-Sadd</h3>
             </div>
             <img src="img/loc/alsaad.png" class="img-responsive" alt="Al-Saad">
             </a>
-        </div>
+        
 
-        <div class="homepage_item">
-           <a href="<?= base_url('/Search')?>" onclick="changeLocation('West Bay');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('West Bay');" >
             <div class="caption">
                 <h3>West Bay</h3>
             </div>
