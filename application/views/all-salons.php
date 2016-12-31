@@ -6,10 +6,13 @@
  <div class="page-title">
         <h2>Discover All Salons</h2>
     </div>
+
+    <div class="flex-all-salons">
+    	
 <?php
 	foreach ($salons as $salon){?>
 		
-	<a href="<?=base_url('/Welcome/salon_page/'.$salon['url_title'])?>"><div class="thumbnail">
+	<a class="thumbnail" href="<?=base_url('/salon/'.$salon['url_title'])?>">
 	<img src="./img/salonprofileimage/<?=$salon['profile_image']?>">
 	<h2><?=$salon['name']?></h2>
 	<div>
@@ -22,7 +25,7 @@
         }
 		?>          
 	</div>
-	<?php
+	<?php /*
 		 if (!empty($salon['categories'])) {
             foreach ($salon['categories'] as $value) {
 				echo '<div class="top-service">';
@@ -30,10 +33,13 @@
 				echo '</div>';
             }
         }
-		
+		*/
 		?> 
-</div></a>	
+</a>	
 	<?php } ?>
+
+	    </div> <!-- End flex -->
+
 
 </section> <!-- End Salons List Div -->
 

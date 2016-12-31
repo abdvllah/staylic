@@ -8,6 +8,13 @@
                 <div class="footer-col col-md-6">
 					<h3>Location</h3>
 					<p>Doha - Qatar</p>
+					<ul>
+						<li><a href="about"> About Staylic</a></li>
+						<li><a href="about/privacy"> Privacy Policy</a></li>
+						<li><a href="about/terms"> Terms of Service</a></li>
+
+						
+					</ul>
                 </div>
                 <div class="footer-col col-md-6">
                    <h3>Follow us on</h3>

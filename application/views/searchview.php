@@ -8,7 +8,7 @@
   myApp.factory('Salons', function ($http) {
   	return {
   		get: function () {
-  			return $http.get('<?php echo site_url('Welcome/get_salons'); ?>');
+  			return $http.get('<?php echo base_url('/Search/get_salons'); ?>');
   		}
   	};
   });
@@ -16,7 +16,7 @@
   myApp.factory('Areas', function ($http) {
   	return {
   		get: function () {
-  			return $http.get('<?php echo site_url('Welcome/get_areas'); ?>')
+  			return $http.get('<?php echo base_url('/Search/get_areas'); ?>')
   		}
   	}
   });
@@ -24,7 +24,7 @@
   myApp.factory('Categories', function ($http) {
   	return {
   		get: function () {
-  			return $http.get('<?php echo site_url('Welcome/get_categories'); ?>')
+  			return $http.get('<?php echo base_url('/Search/get_categories'); ?>')
   		}
   	}
   });
@@ -84,28 +84,30 @@
 
       <!-- filter:{kids_friendly: 'false'} -->
       <div class="item" ng-repeat="salon in filteredSalons = (salons | filter:search | filter:address.name | filter:cat.name | orderBy:sort)">
+       <a href="<?=base_url('/salon')?>/{{ salon.url_title }}">
 
-        <div class="img has-background" style="background-image: url('../img/salonprofileimage/{{salon.profile_image}}');"></div>
+        <div class="img has-background" style="background-image: url('<?=base_url('/img/salonprofileimage/{{salon.profile_image}}')?>');"></div>
 
         <!--<div class="img has-background" style="background-image: url('../img/salonprofileimage/{{salon.profile_image}}');"></div>-->
         <div class="info">
           <div class="title">{{ salon.name }}</div>
-
-          <div class="fx-rating" id="{{salon.rating[0].rating}} "> 
-
-        
-
+          <div ng-if="salon.count_reviewrs > 0" class="salon-rating" id="{{salon.rating[0].rating}} "> 
+         <!-- <div class="salon-rating" id="{{salon.rating[0].rating}}>-->
              <?php
-      /*
 			for($i=1;$i<=5;$i++)	
 			{
 		 ?>
-					<span class="current" ng-if="salon.rating[0].rating == <?=$i?> && salon.rating[0].rating != 'NULL'">♥</span>	
-					<span ng-if="salon.rating[0].rating != NULL && salon.rating[0].rating != <?=$i?>">♥</span>			
+					<span ng-if="salon.rating[0].rating >= <?=$i?> && salon.rating[0].rating != 'NULL'"> 
+					<img src="<?php echo base_url("img/icons/frasha-r.png") ?>" alt="">
+					</span>	
+					<span ng-if="salon.rating[0].rating != NULL && salon.rating[0].rating < <?=$i?>">    <img src="<?php echo base_url("img/icons/frasha.png") ?>" alt="">
+
+				     </span>			
 					<?php
 				}
-			*/
+		
         ?>
+        <span>({{salon.count_reviewrs}})</span>
       </div>
 
 
@@ -114,9 +116,10 @@
      </div>
      <div class="top-service" ng-repeat="cat in filteredCat = (salon.categories | orderBy:'name' )"> <b>{{ cat.name }}</b></div>
      <!--  <div class="price">$</div> -->
-     <a href="<?=base_url('/Welcome/salon_page')?>/{{ salon.url_title }}">
-      <div class="profile">View Full Profile</div></a>
+     <a href="<?=base_url('/salon')?>/{{ salon.url_title }}">
+      <div class="profile">View Profile</div></a>
     </div>
+		  </a>
   </div> <!-- End Item -->
   <div ng-show="filteredSalons.length==0">There are no results found</div>
 </div> <!-- End Results -->

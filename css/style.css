@@ -104,6 +104,19 @@ ul,ol {
  transition: all ease 1s; 
  font-weight: bold;  
 }
+
+
+.warning {
+    background-color: #eb9639;
+    border-color: #eb9639;
+    color: #ffffff;
+}
+.success {
+    background-color: #af4174;
+    border-color: #af4174;
+    color: #ffffff;
+}
+
 /*#hero .hero-txt h1:hover, #hero .hero-txt h1.hover  {
     color: #DE773B;
     }*/
@@ -904,9 +917,12 @@ footer .btn-social img {
 
 .salon-rating span {
      width: 50px; 
-     margin: 0 -5px;
+     margin: 0 -3px;
      color: #D75E84;
      display: inline-block;
+}
+.salon-rating .rate-count {
+    padding: 0 10px;
 }
 .salon-rating img {
     width: 100%;
@@ -985,6 +1001,8 @@ footer .btn-social img {
 @media (max-width: 767px) {
     #salon .flex-salon-profile {
         display: block;
+        margin: 1em;
+        font-size: 80%;
     }
 }
 @media (min-width: 768px) {
@@ -1379,11 +1397,8 @@ footer .btn-social img {
 }
 @media (max-width: 767px) {
 
-    .form .btn {
-        width: 100%;
-    }
     .form .modal-footer .btn {
-        width: 40%;
+        width: 100%;
     }
 }
 
@@ -1449,7 +1464,6 @@ footer .btn-social img {
 .comments {
     margin-top: 1em;
     margin-bottom: 1em;
-    padding: 10px;
     font-size: 140%;
 }
 .comments article{
@@ -1457,7 +1471,6 @@ footer .btn-social img {
   border-bottom: 1px dashed #E98024;
   position: relative;
   background: rgba(233, 128, 36, 0.19);
-  margin: 1em;
 }
 .comments article:last-of-type {
     border-bottom: none;
@@ -2069,15 +2082,25 @@ ul {
 #discover {
     text-align: center;
 }
+
+#discover .flex-all-salons {
+     display: flex;
+     justify-content: space-between;
+     flex-wrap: wrap;
+     flex-direction: row;
+}
+
 #discover .thumbnail {
-    width: 30%;
-    margin: 0.5%;
-    display: inline-block;
+    flex-basis: 32%;
+    margin: auto;
+    display: block;
     position: relative;
     text-align: left;
     -webkit-transition: all ease 0.2s;
     -moz-transition: all ease 0.2s;
     transition: all ease 0.2s; 
+    margin: 0.5em 0;
+    background-color: #FFF;
 }
 #discover .thumbnail:hover, #discover .thumbnail.hover {
  background-color: rgba(221, 77, 99, 0.2);
@@ -2099,28 +2122,6 @@ ul {
 #discover .thumbnail .top-service {
     margin-top: 5px;
 }
-
-
-@media (max-width: 767px) {
-    #discover .thumbnail {
-        width: 100%;
-        margin: 0;
-    }
-}
-
-
-@media (min-width: 768px) {
-    #discover .thumbnail {
-        width: 45%;
-    }
-}
-
-@media (min-width: 992px) { 
-    #discover .thumbnail {
-        width: 30%;
-    }
-}
-
 
 
 /* Booking Page */

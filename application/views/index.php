@@ -6,9 +6,9 @@
     </div>
     <div id="to-do">
         <ul>
-            <a href="<?= base_url('../StaylicFrontend/Welcome/search')?>"><li><span class="glyphicon glyphicon-search"></span> <h2>Search for nearby salon</h2></li></a>
-            <a href="<?= base_url('../StaylicFrontend/Salons/')?>"><li><span class="glyphicon glyphicon-eye-open"></span> <h2>Discover All Salons</h2></li></a>
-            <a href="<?= base_url('../StaylicFrontend/Welcome/map')?>"><li><span class="glyphicon glyphicon-map-marker"></span> <h2>View salons map</h2></li></a>
+            <a href="<?= base_url('/search')?>"><li><span class="glyphicon glyphicon-search"></span> <h2>Search for nearby salon</h2></li></a>
+            <a href="<?= base_url('/discover_salons/')?>"><li><span class="glyphicon glyphicon-eye-open"></span> <h2>Discover All Salons</h2></li></a>
+            <a href="<?= base_url('/salons_map/')?>"><li><span class="glyphicon glyphicon-map-marker"></span> <h2>View salons map</h2></li></a>
         </ul>            
     </div>
     <div class="hero-hover"></div>
@@ -19,7 +19,7 @@
     <div class="search-icon">
         <img class="icon" src="img/icons/search.png" alt="search icon">
     </div>
-    <form action="Welcome/search" method="post">
+    <form action="Search" method="post">
 
         <div>
             <input type="text" id="query" name="query" placeholder="Salon Name">
@@ -57,14 +57,14 @@
     <div class="wrap-h"><h2>CATEGORIES</h2></div>
    
     <div class="homepage_item" id="haircat">
-     <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Hair');" >
+     <a href="<?= base_url('/Search')?>" onclick="changeCategory('Hair');" >
         <div class="caption">
             <h3>Hair</h3>
         </div>   <img src="img/categories/hair.png" class="img-responsive" alt="Hair category"> 
         </a>
     </div>
     <div class="homepage_item" id="facialcat">
-      <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Facial');" >
+      <a href="<?= base_url('/Search')?>" onclick="changeCategory('Facial');" >
         <div class="caption">
             <h3>Facial</h3>
         </div>
@@ -74,7 +74,7 @@
    
    
     <div class="homepage_item" id="mpcat">
-     <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Manicure & Pedicure');" >
+     <a href="<?= base_url('/Search')?>" onclick="changeCategory('Manicure & Pedicure');" >
         <div class="caption">
             <h3>Manicure & Pedicure</h3>
         </div>
@@ -82,7 +82,7 @@
     </a>
     </div>
        <div class="homepage_item" id="waxingcat">
-        <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Waxing');" >
+        <a href="<?= base_url('/Search')?>" onclick="changeCategory('Waxing');" >
         <div class="caption">
             <h3>Waxing</h3>
         </div>
@@ -91,7 +91,7 @@
     </div>
    
        <div class="homepage_item" id="makeupcat">
-         <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Makeup');">
+         <a href="<?= base_url('/Search')?>" onclick="changeCategory('Makeup');">
         <div class="caption">
             <h3>Makeup</h3>
         </div>
@@ -99,7 +99,7 @@
         </a>
     </div>
     <div class="homepage_item" id="hennacat">
-            <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Henna');" >
+            <a href="<?= base_url('/Search')?>" onclick="changeCategory('Henna');" >
         <div class="caption">
             <h3>Henna</h3>
         </div>
@@ -107,7 +107,7 @@
        </a>
     </div>
     <div class="homepage_item" id="bridalcat">
-        <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Bride');">
+        <a href="<?= base_url('/Search')?>" onclick="changeCategory('Bride');">
         <div class="caption">
             <h3>Bridal</h3>
         </div>
@@ -115,7 +115,7 @@
        </a>
     </div>
     <div class="homepage_item" id="spacat">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeCategory('Spa');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeCategory('Spa');" >
         <div class="caption">
             <h3>Spa</h3>
         </div>
@@ -127,7 +127,7 @@
         <div class="wrap-h"><h2>LOCATIONS</h2></div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Al Wakrah');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Wakrah');" >
             <div class="caption">
                 <h3>Al-Wakrah</h3>
             </div>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Old Airport');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Old Airport');" >
             <div class="caption">
                 <h3>Old Airport</h3>
             </div>
@@ -145,7 +145,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Al Rayyan');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Rayyan');" >
             <div class="caption">
                 <h3>Al-Rayyan</h3>
             </div>
@@ -154,7 +154,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Madinat Khalifa');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Madinat Khalifa');" >
             <div class="caption">
                 <h3>Madinat Khalifa</h3>
             </div>
@@ -163,7 +163,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Um Salal Mohammed');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Um Salal Mohammed');" >
             <div class="caption">
                 <h3>Umsalal</h3>
             </div>
@@ -172,7 +172,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Al Khour');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Khour');" >
             <div class="caption">
                 <h3>Al-Khour</h3>
             </div>
@@ -181,7 +181,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('Al Saad');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('Al Saad');" >
             <div class="caption">
                 <h3>Al-Saad</h3>
             </div>
@@ -190,7 +190,7 @@
         </div>
 
         <div class="homepage_item">
-           <a href="<?= base_url('/Welcome/search')?>" onclick="changeLocation('West Bay');" >
+           <a href="<?= base_url('/Search')?>" onclick="changeLocation('West Bay');" >
             <div class="caption">
                 <h3>West Bay</h3>
             </div>
