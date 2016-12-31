@@ -688,8 +688,43 @@ section h2 {
     max-width: 400px;
 }
 
-.homepage_item .caption {
+#home .flex-homepage-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#home .flex-homepage-items .item {
+    position: relative;
+    margin: 0.5%;
+}
+
+#home .flex-homepage-items .item:hover .caption, #home .flex-homepage-items .item.hover .caption {
+ background-color: rgba(236,109,134,0.7);
+}
+
+#home .flex-homepage-items .item .caption {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 1;
+    border-radius: 50%;
+    background-color: rgba(236,109,134,0.3);
+    -webkit-transition: all ease .3s;
+    -moz-transition: all ease .3s;
+    transition: all ease .3s;
+    border: 1px solid rgba(186, 61, 81, 0.3);
+}
+
+#home .flex-homepage-items .item .caption h3 {
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+
+ .homepage_item .caption {
     width: 100%;
     height: 100%;
     opacity: 1;
@@ -752,6 +787,9 @@ footer .footer-below {
     background-color: #B43A4D;
 }
 
+footer ul {
+    margin: 5px 0;
+}
 footer ul.inline li {
     display: inline-block;
 }
@@ -773,6 +811,14 @@ footer .btn-social:hover, footer .btn-social.hover {
 footer .btn-social img {
     width: 35px;
     height: 35px;
+}
+footer a {
+    color: #FFF;
+    padding: 0 10px;
+}
+footer a:hover {
+    color: #d4d4d4;
+    text-decoration: underline;
 }
 
 .btn:focus,
@@ -849,7 +895,7 @@ footer .btn-social img {
 #location {
     text-align: center;
 }
-#location .item {
+/*#location .item {
     position: relative;
     height: 120px;
     width: 120px;
@@ -875,7 +921,7 @@ footer .btn-social img {
     width: 100%;
     border-radius: 100%;
 }
-
+*/
 
 
 
@@ -1724,6 +1770,11 @@ footer .btn-social img {
     line-height: 1;
     margin-left: 5px;
 }
+#results .item .info .rating img {
+    width: 35px;
+    margin: -3px;
+    margin-bottom: 5px;
+}
 #results .item .info .fx-rating span {
     width: 15px;
 }
@@ -1741,7 +1792,6 @@ footer .btn-social img {
 }
 #results .item .info a {
     display: block;
-    width: 160px;
 }
 
 #results .item .profile {
@@ -1979,7 +2029,7 @@ div#success .alert {
 @media screen and (min-width: 768px) {
 
     #home, #search-page, #salon, #salon-owner, #contact, #about-us, #book, #discover {
-        width: 800px;
+        width: 90%;
         margin: 0 auto;
         margin-top: 5em;
     }
@@ -1991,7 +2041,7 @@ div#success .alert {
 
 @media (min-width: 992px) {
     #home, #search-page, #salon, #salon-owner, #contact, #about-us, #book, #discover {
-        width: 1000px;
+        width: 90%;
         margin: 0 auto;
         margin-top: 5em;
     }
@@ -2085,21 +2135,20 @@ ul {
 
 #discover .flex-all-salons {
      display: flex;
-     justify-content: space-between;
+     justify-content: left;
      flex-wrap: wrap;
      flex-direction: row;
 }
 
 #discover .thumbnail {
     flex-basis: 32%;
-    margin: auto;
     display: block;
     position: relative;
     text-align: left;
     -webkit-transition: all ease 0.2s;
     -moz-transition: all ease 0.2s;
     transition: all ease 0.2s; 
-    margin: 0.5em 0;
+    margin: 0.5%;
     background-color: #FFF;
 }
 #discover .thumbnail:hover, #discover .thumbnail.hover {
@@ -2108,6 +2157,18 @@ ul {
  z-index: 2;
  cursor: pointer;
 }
+
+@media (max-width: 767px) {
+    #discover .thumbnail {
+        flex-basis: 100%;
+    }
+}
+
+#discover .thumbnail .img {
+    width: 100%;
+    height: 250px;
+}
+
 #discover .thumbnail h2 {
     color: #DD4D63;
     font-size: 18px;
@@ -2208,6 +2269,11 @@ ul {
     width: 80px;
     font-size: 120%;
     text-align: center;
+}
+
+.image-404 {
+    background: url(../img/not-found.jpg) #fff no-repeat top;
+    height: 400px;
 }
 
 
