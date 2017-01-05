@@ -1,20 +1,14 @@
 <?php include 'header.php' ?>
 
 <div id="hero" class="has-background">
-   <!--  <picture>
-        <source srcset="img/hero.jpg" media="(min-width: 900px)">
-        <source srcset="img/hero-m.jpg" media="(min-width: 501px)">
-        <img src="img/hero-s.jpg"  alt="">
-    </picture> -->
-
     <div class="hero-txt">
         <h1>Staylic is an online network that promotes beauty salons across Qatar. Finding a Beauty Service has never been easier!</h1>
     </div>
     <div id="to-do">
         <ul>
-            <a href="<?= base_url('/search')?>"><li><span class="glyphicon glyphicon-search"></span> <h2>Search for nearby salon</h2></li></a>
-            <a href="<?= base_url('/discover_salons/')?>"><li><span class="glyphicon glyphicon-eye-open"></span> <h2>Discover All Salons</h2></li></a>
-            <a href="<?= base_url('/salons_map/')?>"><li><span class="glyphicon glyphicon-map-marker"></span> <h2>View salons map</h2></li></a>
+            <a href="<?= base_url('/search')?>"><li><span class="glyphicon glyphicon-search"></span> <h2>Search</h2></li></a>
+            <a href="<?= base_url('/discover_salons/')?>"><li><span class="glyphicon glyphicon-eye-open"></span> <h2>Discover</h2></li></a>
+            <a href="<?= base_url('/salons_map/')?>"><li><span class="glyphicon glyphicon-map-marker"></span> <h2>Map</h2></li></a>
         </ul>            
     </div>
     <div class="hero-hover"></div>
@@ -27,7 +21,7 @@
     </div>
     <form action="Search" method="post">
 
-        <div>
+        <div class="query">
             <input type="text" id="query" name="query" placeholder="Salon Name">
         </div>
         <div class="select">                          
@@ -129,7 +123,7 @@
             <div class="caption">
                 <h3>Al-Wakrah</h3>
             </div>
-            <img src="img/loc/alwakrah.png" class="img-responsive" alt="Al-Wakrah">
+            <img src="img/loc/alwakrah.png" class="img-responsive" alt="Al Wakrah">
         </a>
         
 
@@ -143,7 +137,7 @@
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Rayyan');" >
             <div class="caption">
-                <h3>Al-Rayyan</h3>
+                <h3>Al Rayyan</h3>
             </div>
             <img src="img/loc/alrayyan.png" class="img-responsive" alt="Al Rayyan">
         </a>
@@ -157,17 +151,17 @@
             </a>
         
 
-           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Um Salal Mohammed');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Duhail');" >
             <div class="caption">
-                <h3>Umsalal</h3>
+                <h3>Al Duhail</h3>
             </div>
-            <img src="img/loc/umsalal.png" class="img-responsive" alt="Umsalal">
+            <img src="img/loc/alduhail.png" class="img-responsive" alt="Al Duhail">
             </a>
         
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Khour');" >
             <div class="caption">
-                <h3>Al-Khour</h3>
+                <h3>Al Khour</h3>
             </div>
             <img src="img/loc/alkhour.png" class="img-responsive" alt="Al-Khour">
             </a>
@@ -175,7 +169,7 @@
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Sadd');" >
             <div class="caption">
-                <h3>Al-Sadd</h3>
+                <h3>Al Sadd</h3>
             </div>
             <img src="img/loc/alsaad.png" class="img-responsive" alt="Al-Saad">
             </a>
@@ -205,6 +199,25 @@ $(document).ready(function () {
     $('#area').val(sessionStorage.sArea);
     $('#category').val(sessionStorage.sCat);
 });
+
+// Hero bakcground change dynamicly
+// var backgrounds = [
+// 'url(http://staylic.com/StaylicFrontend/img/hero/hero.jpg)', 
+// 'url(http://staylic.com/StaylicFrontend/img/hero/hero2.jpg)', 
+// 'url(http://staylic.com/StaylicFrontend/img/hero/hero3.jpg)', 
+// 'url(http://staylic.com/StaylicFrontend/img/hero/hero4.jpg)', 
+// ];
+// var current = 0;
+
+// function nextBackground() {
+//     $("#hero").css(
+//         'background-image',
+//         backgrounds[current = ++current % backgrounds.length]);
+
+//     setTimeout(nextBackground, 5000);
+// }
+// setTimeout(nextBackground, 5000);
+
 
 // Activating hover for touch screens
 $('*').on("touchstart", function (e) {
@@ -244,6 +257,7 @@ function displayVals() {
 }
 
 $( "select, input" ).change(displayVals );
+//**search by category
     function changeCategory(cat){
 	 sessionStorage.sCat = cat;
 	 sessionStorage.sArea='';
@@ -252,7 +266,7 @@ $( "select, input" ).change(displayVals );
 	
 	function changeLocation(location){
 	 sessionStorage.sCat = '';
-	 sessionStorage.sArea= location;
+	 sessionStorage.sArea=location;
 	 sessionStorage.sName = '';
 	}
 

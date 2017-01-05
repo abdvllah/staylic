@@ -36,6 +36,7 @@
                 <li><a href="<?= base_url('')?>">Home</a></li>
                <li><a href="<?= base_url('/search/')?>">Search</a></li>
                <li><a href="<?= base_url('/discover_salons/')?>">Discover</a></li>
+               <li><a href="<?= base_url('/salons_map/')?>">Map</a></li>
                 <li><a href="<?= base_url('/salon_owner/')?>">Salon Owner?</a></li>
                 <li><a href="<?= base_url('/contact_us/')?>">Contact</a></li>
             </ul>
@@ -63,6 +64,9 @@
                     </li>
                     <li>
                         <a href="<?= base_url('/discover_salons/')?>">Discover</a>
+                    </li>
+                    <li>
+                        <a href="<?= base_url('/salons_map/')?>">Map</a>
                     </li>
                     <li>
                         <a class="special" href="<?= base_url('/salon_owner')?>">Salon Owner?</a>

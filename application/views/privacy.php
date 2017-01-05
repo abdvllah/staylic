@@ -7,7 +7,7 @@
 		<div class="my-jumbotron">
 		<!-- #######  YAY, I AM THE SOURCE EDITOR! #########-->
 <p>We pay high attention to your privacy. In the course of using our website <a href="http://www.staylic.com">http://www.staylic.com</a> (&ldquo;Website&rdquo;), you may provide us with personally identifiable information, used to contact and identify you (&ldquo;Personal Information&rdquo;). This notice describes the privacy practices on the Website and its subdomains, including articles, discussion forums, resources and the services and features available through this website (the &ldquo;Services&rdquo;) as provided by Staylic.com. (&ldquo;Staylic&rdquo;, &ldquo;we&rdquo; or &ldquo;us&rdquo;) and tells you how we collect, use, disclose and protect your Personal Information.</p>
-<p>To protect your privacy, we update our privacy policy often, and post the changes on&nbsp;<a href="<?php base_url('/about/privacy')?>">http://www.staylic.com/privacy</a>.</p>
+<p>To protect your privacy, we update our privacy policy often, and post the changes on&nbsp;<a href="http://www.staylic.com/about/privacy">http://www.staylic.com/about/privacy</a>.</p>
 <p>We reserve the right to modify this privacy policy at any time, so please review it frequently. If we make changes that materially affects our users, we will notify you here, by email, or by means of a notice on our home page.</p>
 <h3><strong>Information Collection</strong></h3>
 <h4>Review and Rating</h4>
