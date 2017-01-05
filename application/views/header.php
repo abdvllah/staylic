@@ -37,7 +37,7 @@
                <li><a href="<?= base_url('/search/')?>">Search</a></li>
                <li><a href="<?= base_url('/discover_salons/')?>">Discover</a></li>
                 <li><a href="<?= base_url('/salon_owner/')?>">Salon Owner?</a></li>
-                <li><a href="<?= base_url('/contact_us/')?>">Contact Us</a></li>
+                <li><a href="<?= base_url('/contact_us/')?>">Contact</a></li>
             </ul>
         </div>
     </div> <!-- End Nav -->
@@ -59,17 +59,17 @@
                         <a href="<?= base_url('')?>">Home</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('/search/')?>">Find Salons</a>
+                        <a href="<?= base_url('/search/')?>">Search</a>
                     </li>
                     <li>
-                        <a href="<?= base_url('/discover_salons/')?>">Discover Salons</a>
+                        <a href="<?= base_url('/discover_salons/')?>">Discover</a>
                     </li>
                     <li>
                         <a class="special" href="<?= base_url('/salon_owner')?>">Salon Owner?</a>
                     </li>
 
                     <li>
-                        <a href="<?= base_url('/contact_us')?>">Contact Us</a>
+                        <a href="<?= base_url('/contact_us')?>">Contact</a>
                     </li>
                     
                 </ul>

@@ -1,8 +1,14 @@
 <?php include 'header.php' ?>
 
 <div id="hero" class="has-background">
+   <!--  <picture>
+        <source srcset="img/hero.jpg" media="(min-width: 900px)">
+        <source srcset="img/hero-m.jpg" media="(min-width: 501px)">
+        <img src="img/hero-s.jpg"  alt="">
+    </picture> -->
+
     <div class="hero-txt">
-        <h1>Staylic is an online network that promotes beauty salons across Qatar. Finding a Beauty Service has not been easier!</h1>
+        <h1>Staylic is an online network that promotes beauty salons across Qatar. Finding a Beauty Service has never been easier!</h1>
     </div>
     <div id="to-do">
         <ul>
@@ -200,25 +206,6 @@ $(document).ready(function () {
     $('#category').val(sessionStorage.sCat);
 });
 
-// Hero bakcground change dynamicly
-var backgrounds = [
-'url(http://staylic.com/StaylicFrontend/img/hero/hero.jpg)', 
-'url(http://staylic.com/StaylicFrontend/img/hero/hero2.jpg)', 
-'url(http://staylic.com/StaylicFrontend/img/hero/hero3.jpg)', 
-'url(http://staylic.com/StaylicFrontend/img/hero/hero4.jpg)', 
-];
-var current = 0;
-
-function nextBackground() {
-    $("#hero").css(
-        'background-image',
-        backgrounds[current = ++current % backgrounds.length]);
-
-    setTimeout(nextBackground, 5000);
-}
-setTimeout(nextBackground, 5000);
-
-
 // Activating hover for touch screens
 $('*').on("touchstart", function (e) {
     "use strict"; //satisfy the code inspectors
@@ -257,7 +244,6 @@ function displayVals() {
 }
 
 $( "select, input" ).change(displayVals );
-//**search by category
     function changeCategory(cat){
 	 sessionStorage.sCat = cat;
 	 sessionStorage.sArea='';
@@ -266,7 +252,7 @@ $( "select, input" ).change(displayVals );
 	
 	function changeLocation(location){
 	 sessionStorage.sCat = '';
-	 sessionStorage.sArea=location;
+	 sessionStorage.sArea= location;
 	 sessionStorage.sName = '';
 	}
 

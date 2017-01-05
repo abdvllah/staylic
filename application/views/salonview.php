@@ -1,7 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');?>
 <?php include 'header.php' ?>
 
-
 <div id="salon">
     <div id="banner" style="background-image: url(<?= base_url('img/slider/slider2.jpg'); ?>);" class="has-background">
         <h2 class="salon-name"><?php echo htmlspecialchars_decode($salon['name']); ?></h2>
@@ -246,12 +245,17 @@ else {  // display gray image
 
 
     <div id="information">
+
         <?php
         foreach ($salon['address'] as $value) { 
 		 if(isset($value->altitude) && isset($value->longtitude) )	{			
 			$altitude=$value->altitude;
 		$longtitude=$value->longtitude;			
 		?>
+
+        <h3 id="distance">
+            
+        </h3>
         <!--   echo '<h4>'.$value['name'].'</h4>';  -->
         <div id="map"></div>
         <div class="salon-address">
@@ -317,6 +321,15 @@ else {  // display gray image
             }
             if ($salon['by_appointment'] == '1') {
             echo '<img data-toggle="tooltip" data-placement="top" title="Appointment by call" src=' . base_url("img/amen/bycall.png") . ' alt="">&nbsp;&nbsp;';
+            }
+            if ($salon['refreshments_avilable'] == '1') {
+            echo '<img data-toggle="tooltip" data-placement="top" title="Refreshment Available" src=' . base_url("img/amen/drinks.png") . ' alt="">&nbsp;&nbsp;';
+            }
+            if ($salon['wifi_avilable'] == '1') {
+            echo '<img data-toggle="tooltip" data-placement="top" title="Wifi Available" src=' . base_url("img/amen/wifi.png") . ' alt="">&nbsp;&nbsp;';
+            }
+            if ($salon['home_service'] == '1') {
+            echo '<img data-toggle="tooltip" data-placement="top" title="Home Service" src=' . base_url("img/amen/home.png") . ' alt="">&nbsp;&nbsp;';
             }
             if ($salon['payment_method'] == '0') {
 
@@ -402,9 +415,67 @@ function initMap() {
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 
+<script>
+        function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+          var R = 6371; // Radius of the earth in km
+          var dLat = deg2rad(lat2-lat1);  // deg2rad below
+          var dLon = deg2rad(lon2-lon1); 
+          var a = 
+            Math.sin(dLat/2) * Math.sin(dLat/2) +
+            Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+            Math.sin(dLon/2) * Math.sin(dLon/2)
+            ; 
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+          var d = R * c; // Distance in km
+          return d.toFixed(2) + " KM";
+        }
+
+        function deg2rad(deg) {
+          return deg * (Math.PI/180)
+        }
+
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var latlon = position.coords.latitude + "," + position.coords.longitude;
+            var mydiv = document.getElementById("distance");
+
+            mydiv.innerHTML = getDistanceFromLatLonInKm(<?php echo $altitude ?> , <?php echo $longtitude; ?>, position.coords.latitude, position.coords.longitude);
+
+            // var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+            // +latlon+"&zoom=14&size=400x300&sensor=false";
+            // document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+        }
+
+        function showError(error) {
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML = "User denied the request for Geolocation."
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML = "Location information is unavailable."
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML = "The request to get user location timed out."
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML = "An unknown error occurred."
+                    break;
+            }
+        }
+
+</script>
 
 <script type="text/javascript">
 $(document).ready(function () {
+    getLocation();
 
 // Initiate tooltip
 $('[data-toggle="tooltip"]').tooltip();

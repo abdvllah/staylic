@@ -58,8 +58,14 @@
 
   	$scope.cat = {
   		'name': sessionStorage.sCat,
-  	};  
+  	};
+
+    sessionStorage.removeItem('sName');
+    sessionStorage.removeItem('sArea');
+    sessionStorage.removeItem('sCat');
+
   });
+
   </script>
   <div id="search-page" class="wrap" ng-app="myModule" ng-controller="myController">    
   	<div id="results">
@@ -74,8 +80,9 @@
 
   				<div class="options">
   					<ul>
-              <li ng-click="setSort('area')">By Area</li>
+              <li ng-click="setSort('address[0].name')">By Area</li>
               <li ng-click="setSort('name')">Alphabeticl (A to Z)</li>
+              <li ng-click="setSort('rating[0].rating')">By Rating (Low to High)</li>
             </ul>
           </div>
         </div> <!-- End sort -->
@@ -84,13 +91,14 @@
 
       <!-- filter:{kids_friendly: 'false'} -->
       <div class="item" ng-repeat="salon in filteredSalons = (salons | filter:search | filter:address.name | filter:cat.name | orderBy:sort)">
-       <a href="<?=base_url('/salon')?>/{{ salon.url_title }}">
+       <!-- <a href="<?=base_url('/salon')?>/{{ salon.url_title }}"> -->
 
-        <div class="img has-background" style="background-image: url('<?=base_url('/img/salonprofileimage/{{salon.profile_image}}')?>');"></div>
+        <a href="<?=base_url('/salon')?>/{{ salon.url_title }}"><div class="img has-background" style="background-image: url('<?=base_url('/img/salonprofileimage/{{salon.profile_image}}')?>');"></div></a>
 
         <!--<div class="img has-background" style="background-image: url('../img/salonprofileimage/{{salon.profile_image}}');"></div>-->
         <div class="info">
-          <div class="title">{{ salon.name }}</div>
+          <!-- <b>{{salon}}</b> -->
+          <a href="<?=base_url('/salon')?>/{{ salon.url_title }}"><div class="title">{{ salon.name }}</div></a>
           <div ng-if="salon.count_reviewrs > 0" class="rating" id="{{salon.rating[0].rating}} "> 
          <!-- <div class="salon-rating" id="{{salon.rating[0].rating}}>-->
              <?php
@@ -119,7 +127,6 @@
      <a href="<?=base_url('/salon')?>/{{ salon.url_title }}">
       <div class="profile">View Profile</div></a>
     </div>
-		  </a>
   </div> <!-- End Item -->
   <div ng-show="filteredSalons.length==0">There are no results found</div>
 </div> <!-- End Results -->
@@ -128,6 +135,7 @@
   <span class="glyphicon glyphicon-sort"></span>
   <br>
 </div>
+
 <div id="filter" class="form">
   <h4 style="margin-top: 0;">Filters</h4>
   <div>
@@ -161,7 +169,10 @@
   		<b>Features</b>
   		<li><input type="checkbox" id="par" ng-model="search.has_parking" ng-true-value="'1'" ng-false-value="">Has Parking</li>
   		<li><input type="checkbox" ng-model="search.by_appointment" ng-true-value="'1'" ng-false-value="">Book By Appointment</li>
-  		<li><input type="checkbox"ng-model="search.kids_friendly" ng-true-value="'1'" ng-false-value="">Kids Friendly</li>
+      <li><input type="checkbox"ng-model="search.kids_friendly" ng-true-value="'1'" ng-false-value="">Kids Friendly</li>
+      <li><input type="checkbox"ng-model="search.refreshments_avilable" ng-true-value="'1'" ng-false-value="">Refreshments Avilable</li>
+      <li><input type="checkbox"ng-model="search.wifi_avilable" ng-true-value="'1'" ng-false-value="">Wifi Available</li>
+      <li><input type="checkbox"ng-model="search.home_service" ng-true-value="'1'" ng-false-value="">Home Service</li>
   	</ul>
 
   	 <!-- 

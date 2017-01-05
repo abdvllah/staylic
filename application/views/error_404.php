@@ -2,9 +2,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-	<section id="about-us">
-	<div class="image-404" >
-	</div>
+	<section id="not-found">
+	<img  src="./img/not-found.jpg" alt="">
 	<div class="my-jumbotron">
 	 <h3>Page Not Found</h3>
 	 <p>
