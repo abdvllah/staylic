@@ -1,14 +1,20 @@
 <?php include 'header.php' ?>
 
 <div id="hero" class="has-background">
+   <!--  <picture>
+        <source srcset="img/hero.jpg" media="(min-width: 900px)">
+        <source srcset="img/hero-m.jpg" media="(min-width: 501px)">
+        <img src="img/hero-s.jpg"  alt="">
+    </picture> -->
+
     <div class="hero-txt">
         <h1>Staylic is an online network that promotes beauty salons across Qatar. Finding a Beauty Service has never been easier!</h1>
     </div>
     <div id="to-do">
         <ul>
-            <a href="<?= base_url('/search')?>"><li><span class="glyphicon glyphicon-search"></span> <h2>Search</h2></li></a>
-            <a href="<?= base_url('/discover_salons/')?>"><li><span class="glyphicon glyphicon-eye-open"></span> <h2>Discover</h2></li></a>
-            <a href="<?= base_url('/salons_map/')?>"><li><span class="glyphicon glyphicon-map-marker"></span> <h2>Map</h2></li></a>
+            <a href="<?= base_url('/discover_salons/')?>"><li><!-- <span class="glyphicon glyphicon-eye-open"></span> --> <img src="img/svg/discover.svg" alt=""><h2>Discover</h2></li></a>
+            <a href="<?= base_url('/search')?>"><li><!-- <span class="glyphicon glyphicon-search"></span> --> <img src="img/svg/search.svg" alt=""><h2>Search</h2></li></a>
+            <a href="<?= base_url('/salons_map/')?>"><li><!-- <span class="glyphicon glyphicon-map-marker"></span> --> <img src="img/svg/map.svg" alt=""><h2>Map</h2></li></a>
         </ul>            
     </div>
     <div class="hero-hover"></div>
@@ -21,7 +27,7 @@
     </div>
     <form action="Search" method="post">
 
-        <div class="query">
+        <div>
             <input type="text" id="query" name="query" placeholder="Salon Name">
         </div>
         <div class="select">                          
@@ -123,7 +129,7 @@
             <div class="caption">
                 <h3>Al-Wakrah</h3>
             </div>
-            <img src="img/loc/alwakrah.png" class="img-responsive" alt="Al Wakrah">
+            <img src="img/loc/alwakrah.png" class="img-responsive" alt="Al-Wakrah">
         </a>
         
 
@@ -137,7 +143,7 @@
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Rayyan');" >
             <div class="caption">
-                <h3>Al Rayyan</h3>
+                <h3>Al-Rayyan</h3>
             </div>
             <img src="img/loc/alrayyan.png" class="img-responsive" alt="Al Rayyan">
         </a>
@@ -151,17 +157,17 @@
             </a>
         
 
-           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Duhail');" >
+           <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Um Salal Mohammed');" >
             <div class="caption">
-                <h3>Al Duhail</h3>
+                <h3>Umsalal</h3>
             </div>
-            <img src="img/loc/alduhail.png" class="img-responsive" alt="Al Duhail">
+            <img src="img/loc/umsalal.png" class="img-responsive" alt="Umsalal">
             </a>
         
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Khour');" >
             <div class="caption">
-                <h3>Al Khour</h3>
+                <h3>Al-Khour</h3>
             </div>
             <img src="img/loc/alkhour.png" class="img-responsive" alt="Al-Khour">
             </a>
@@ -169,7 +175,7 @@
 
            <a class="item" href="<?= base_url('/Search')?>" onclick="changeLocation('Al Sadd');" >
             <div class="caption">
-                <h3>Al Sadd</h3>
+                <h3>Al-Sadd</h3>
             </div>
             <img src="img/loc/alsaad.png" class="img-responsive" alt="Al-Saad">
             </a>
@@ -191,33 +197,51 @@
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
 
+<script>
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+
+      sessionStorage.latitude = position.coords.latitude;
+      sessionStorage.longitude = position.coords.longitude;
+
+        // var img_url = "https://maps.googleapis.com/maps/api/staticmap?center="
+        // +latlon+"&zoom=14&size=400x300&sensor=false";
+        // document.getElementById("mapholder").innerHTML = "<img src='"+img_url+"'>";
+    }
+
+    function showError(error) {
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+                x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+</script>
 
 <script>
 $(document).ready(function () {
+    getLocation();
     // Store session search terms
     $('#query').val(sessionStorage.sName);
     $('#area').val(sessionStorage.sArea);
     $('#category').val(sessionStorage.sCat);
 });
-
-// Hero bakcground change dynamicly
-// var backgrounds = [
-// 'url(http://staylic.com/StaylicFrontend/img/hero/hero.jpg)', 
-// 'url(http://staylic.com/StaylicFrontend/img/hero/hero2.jpg)', 
-// 'url(http://staylic.com/StaylicFrontend/img/hero/hero3.jpg)', 
-// 'url(http://staylic.com/StaylicFrontend/img/hero/hero4.jpg)', 
-// ];
-// var current = 0;
-
-// function nextBackground() {
-//     $("#hero").css(
-//         'background-image',
-//         backgrounds[current = ++current % backgrounds.length]);
-
-//     setTimeout(nextBackground, 5000);
-// }
-// setTimeout(nextBackground, 5000);
-
 
 // Activating hover for touch screens
 $('*').on("touchstart", function (e) {
@@ -257,7 +281,6 @@ function displayVals() {
 }
 
 $( "select, input" ).change(displayVals );
-//**search by category
     function changeCategory(cat){
 	 sessionStorage.sCat = cat;
 	 sessionStorage.sArea='';
@@ -266,7 +289,7 @@ $( "select, input" ).change(displayVals );
 	
 	function changeLocation(location){
 	 sessionStorage.sCat = '';
-	 sessionStorage.sArea=location;
+	 sessionStorage.sArea= location;
 	 sessionStorage.sName = '';
 	}
 
